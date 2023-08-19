@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaos Organizer</title>
+</head>
+
+<body>
+    <main class="main">
+        <nav class="nav-panel">
+            <div class="nav-panel__item active">
+                <input id="recents" name="nav-panel" type="radio" checked hidden>
+                <label class="nav-panel__item-label" for="recents">Recents</label>
+            </div>
+            <div class="nav-panel__item">
+                <input id="favorites" name="nav-panel" type="radio" hidden>
+                <label class="nav-panel__item-label" for="favorites">Favorites</label>
+            </div>
+            <div class="nav-panel__item">
+                <input id="categories" name="nav-panel" type="radio" hidden>
+                <label class="nav-panel__item-label" for="categories">Categories</label>
+            </div>
+            <div class="nav-panel__animation recents">
+                <div class="left"></div>
+                <div class="middle"></div>
+                <div class="right"></div>
+            </div>
+        </nav>
+
+        <ul class="content"></ul>
+
+        <form class="form-panel active">
+            <input class="form-panel_input" type="text" name="text" autocomplete="off" tabindex="-1">
+            <input class="attach-file__input" type="file" multiple name="file" id="upload" hidden>
+            <label for="upload" class="attach-file"><svg class="attach-file__svg" xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40"><path d="M460-80q-91.333 0-155.667-63Q240-206 240-297.333V-724q0-64.667 46-110.333Q332-880 396.667-880q65.333 0 111 45.667 45.666 45.666 45.666 111V-334q0 39.333-27 66.667Q499.333-240 460-240t-66.333-28.667q-27-28.666-27-68.666v-388h46.666v390q0 20.333 13.5 34.5 13.5 14.167 33.167 14.167t33.167-13.834q13.5-13.833 13.5-33.5v-390q0-46-32-77.667t-78-31.667q-46.001 0-78.001 31.667-32 31.667-32 77.667v428q0 70.667 51 120Q388.667-126.666 460-126.666q72 0 122.667-49.667t50.667-121v-428H680V-298q0 91.333-64.333 154.667Q551.333-80 460-80Z"/></svg></label>
+        </form>
+
+        <div class="drag-drop-popup"><span class="drag-drop-popup__text">Drag Files Here</span><svg xmlns="http://www.w3.org/2000/svg" height="60" viewBox="0 -960 960 960" width="60"><path d="M450-313v-371L330-564l-43-43 193-193 193 193-43 43-120-120v371h-60ZM220-160q-24 0-42-18t-18-42v-143h60v143h520v-143h60v143q0 24-18 42t-42 18H220Z"/></svg></div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+name: ahj-homeworks/diploma
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  checks: write
+  contents: write
+  pages: write
+  id-token: write
+  deployments: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    
+    - name: Install Backend
+      run: npm --prefix backend/ install
+
+    - name: Test Backend
+      run: npm --prefix backend/ run lint
+
+    - name: Install Frontend
+      run: npm --prefix frontend/ install
+
+    - name: Test Frontend
+      run: npm --prefix frontend/ run lint
+
+    - name: Build Frontend
+      run: npm --prefix frontend/ run build
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v2
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: 'frontend/dist'
+
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v1
