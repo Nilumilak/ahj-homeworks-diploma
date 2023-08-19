@@ -1,5 +1,6 @@
 import PostsApi from './api/PostsApi'
 import FavoritesApi from './api/FavoritesApi'
+import CategoriesApi from './api/CategoriesApi'
 import SERVER_URL from './app'
 import type { Post, GetResponse } from './types'
 
@@ -7,8 +8,11 @@ export default class ContentBoxWidget {
     private scrollTimeoutFunction: NodeJS.Timeout | null
     private nextLinkPosts: string | undefined
     private nextLinkFavorites: string | undefined
+    private nextLinkCategories: string | undefined
+    private currentCategory: string
     readonly postsApi: PostsApi
     readonly favoritesApi: FavoritesApi
+    readonly categoriesApi: CategoriesApi
 
     constructor (
         readonly contentBoxEl: HTMLUListElement
@@ -16,8 +20,11 @@ export default class ContentBoxWidget {
         this.scrollTimeoutFunction = null
         this.nextLinkPosts = undefined
         this.nextLinkFavorites = undefined
+        this.nextLinkCategories = undefined
+        this.currentCategory = 'images'
         this.postsApi = new PostsApi(SERVER_URL)
         this.favoritesApi = new FavoritesApi(SERVER_URL)
+        this.categoriesApi = new CategoriesApi(SERVER_URL)
     }
 
     init (): void {
@@ -41,6 +48,8 @@ export default class ContentBoxWidget {
                             void this.fetchPosts()
                         } else if (this.nextLinkFavorites) {
                             void this.fetchFavorites()
+                        } else if (this.nextLinkCategories) {
+                            void this.fetchCategories(this.currentCategory)
                         }
                     }
                 }
@@ -72,6 +81,21 @@ export default class ContentBoxWidget {
         if (responseData) {
             this.addPostsToContentBox(responseData)
             this.nextLinkFavorites = responseData.next
+            this.nextLinkPosts = undefined
+        }
+    }
+
+    async fetchCategories (category: string): Promise<void> {
+        let responseData
+        if (this.nextLinkCategories && this.currentCategory === category) {
+            responseData = await this.categoriesApi.get(category, this.nextLinkCategories)
+        } else {
+            responseData = await this.categoriesApi.get(category)
+            this.currentCategory = category
+        }
+        if (responseData) {
+            this.addPostsToContentBox(responseData)
+            this.nextLinkCategories = responseData.next
             this.nextLinkPosts = undefined
         }
     }
@@ -171,5 +195,6 @@ export default class ContentBoxWidget {
     clearLinks (): void {
         this.nextLinkPosts = undefined
         this.nextLinkFavorites = undefined
+        this.nextLinkCategories = undefined
     }
 }

@@ -45,6 +45,7 @@ label {
         transition: all 0.5s;
         
         .nav-panel__item {
+            position: relative;
             width: 33%;
             
             font-size: 2em;
@@ -56,10 +57,51 @@ label {
             &:nth-child(2) {
                 width: 34%;
             }
-        }
 
-        .nav-panel__item.active {
-            color: var(--title-text-color-active);
+            &.active {
+                color: var(--title-text-color-active);
+            }
+
+            .categories__buttons {
+                display: flex;
+
+                position: absolute;
+                right: 0;
+
+                margin-top: 0.8em;
+                margin-right: 1em;
+
+                font-size: 0.8em;
+
+                opacity: 0;
+                transform: translateY(-2em);
+                transition: all 0.5s;
+
+                pointer-events: none;
+                
+                .categories__buttons__item {
+                    margin-right: 1em;
+                    padding: 0.2em 0.5em;
+                    background-color: var(--categories-color);
+                    border-radius: 0.8em;
+                    color: var(--background-color);
+                    transition: color 0.5s;
+                    
+                    &:hover {
+                        color: var(--title-text-color-active);
+                    }
+
+                    &.active {
+                        color: var(--title-text-color-active);
+                    }
+                }
+
+                &.active {
+                    opacity: 1;
+                    pointer-events: all;
+                    transform: translateY(0);
+                }
+            }
         }
     
         .nav-panel__animation {

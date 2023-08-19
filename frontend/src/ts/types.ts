@@ -3,6 +3,7 @@ export type Post = {
     time: string
     isFavorite: boolean
     isFile: boolean
+    type: string
 }
 
 export type GetResponse = {

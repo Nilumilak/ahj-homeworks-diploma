@@ -31,3 +31,7 @@ GitHub Page - https://nilumilak.github.io/ahj-homeworks-diploma/
 
 <img src="pic/favorites_button.png" alt="favorites_button" width="350"/>
 <img src="pic/favorites.png" alt="favorites" width="350"/>
+
+- просмотр вложений по категориям: аудио, видео, изображения, другие файлы (см. боковое меню Telegram);
+
+<img src="pic/categories.png" alt="categories" width="500"/>
