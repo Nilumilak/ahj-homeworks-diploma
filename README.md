@@ -1,4 +1,4 @@
-![CI](https://github.com/Nilumilak/ahj-diploma/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/Nilumilak/ahj-homeworks-diploma/actions/workflows/ci.yml/badge.svg)
 
 GitHub Page - https://nilumilak.github.io/ahj-homeworks-diploma/
 
