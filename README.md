@@ -1,6 +1,6 @@
 ![CI](https://github.com/Nilumilak/ahj-diploma/actions/workflows/ci.yml/badge.svg)
 
-GitHub Page - https://nilumilak.github.io/ahj-diploma/
+GitHub Page - https://nilumilak.github.io/ahj-homeworks-diploma/
 
 ## Выполнены функции:
 
