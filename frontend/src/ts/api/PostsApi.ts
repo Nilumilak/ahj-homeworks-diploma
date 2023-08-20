@@ -5,12 +5,21 @@ export default class PostsApi {
         readonly apiURL: string
     ) {}
 
-    async get (nextLink: string | null = null): Promise<GetResponse | undefined> {
+    async get (getParams: { nextLink?: string, search?: string }): Promise<GetResponse | undefined> {
+        const { nextLink, search } = getParams
+        let searchQuery = ''
+        if (search && search !== '') {
+            if (nextLink) {
+                searchQuery = `&search=${search}`
+            } else {
+                searchQuery = `/?search=${search}`
+            }
+        }
         let url
         if (nextLink) {
-            url = `${this.apiURL}${nextLink}`
+            url = `${this.apiURL}${nextLink}${searchQuery}`
         } else {
-            url = `${this.apiURL}/posts`
+            url = `${this.apiURL}/posts${searchQuery}`
         }
         try {
             const response = await fetch(url)

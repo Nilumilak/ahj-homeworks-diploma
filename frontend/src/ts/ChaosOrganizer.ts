@@ -1,12 +1,14 @@
 import NavPanelWidget from './NavPanelWidget'
 import ContentBoxWidget from './ContentBoxWidget'
 import InputPanelWidget from './InputPanelWidget'
+import SeachPanelWidget from './SearchPanelWidget'
 
 export default class ChaosOrganizer {
     constructor (
         readonly navPanelEl: HTMLElement,
         readonly contentBoxEl: HTMLUListElement,
-        readonly inputPanelEl: HTMLFormElement
+        readonly inputPanelEl: HTMLFormElement,
+        readonly searchPanelEl: HTMLDivElement
     ) {}
 
     init (): void {
@@ -16,5 +18,7 @@ export default class ChaosOrganizer {
         navPanelWidget.init()
         const inputPanelWidget = new InputPanelWidget(this.inputPanelEl)
         inputPanelWidget.init()
+        const seachPanelWidget = new SeachPanelWidget(this.searchPanelEl, contentBoxWidget)
+        seachPanelWidget.init()
     }
 }

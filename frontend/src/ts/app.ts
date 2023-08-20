@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const navPanelEl = document.querySelector('.nav-panel') as HTMLElement
     const contentBoxEl = document.querySelector('.content') as HTMLUListElement
     const inputPanelEl = document.querySelector('.form-panel') as HTMLFormElement
-    const chaosOrganizer = new ChaosOrganizer(navPanelEl, contentBoxEl, inputPanelEl)
+    const searchPanelEl = document.querySelector('.recents__search') as HTMLDivElement
+    const chaosOrganizer = new ChaosOrganizer(navPanelEl, contentBoxEl, inputPanelEl, searchPanelEl)
     chaosOrganizer.init()
 
     const eventSource = new EventSource(`${SERVER_URL}/sse/`)

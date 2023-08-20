@@ -8,9 +8,9 @@ const Router = require('koa-router')
 const router = new Router()
 
 router.get('/posts', (ctx) => {
-    const { time } = ctx.request.query
+    const { time, search } = ctx.request.query
     if (time) {
-        const posts = Posts.get(time)
+        const posts = Posts.get({ time, search })
         if (posts.length !== 0) {
             const next = posts[posts.length - 1].time
             ctx.response.body = {
@@ -31,7 +31,7 @@ router.get('/posts', (ctx) => {
 
         return
     }
-    const posts = Posts.get()
+    const posts = Posts.get({ search })
     if (posts.length !== 0) {
         const next = posts[posts.length - 1].time
         ctx.response.body = {

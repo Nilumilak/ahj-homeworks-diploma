@@ -35,3 +35,7 @@ GitHub Page - https://nilumilak.github.io/ahj-homeworks-diploma/
 - просмотр вложений по категориям: аудио, видео, изображения, другие файлы (см. боковое меню Telegram);
 
 <img src="pic/categories.png" alt="categories" width="500"/>
+
+- поиск по сообщениям (интерфейс + реализация на сервере);
+
+<img src="pic/search.png" alt="search" width="500"/>

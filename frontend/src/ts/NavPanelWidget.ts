@@ -5,6 +5,7 @@ export default class NavPanelWidget {
     private currentPanelItem: HTMLDivElement
     readonly categoriesButtonsEl: HTMLDivElement
     private currentCategory: [HTMLLabelElement, string]
+    readonly searchInputEl: HTMLInputElement
 
     constructor (
         readonly navPanelEl: HTMLElement,
@@ -17,6 +18,7 @@ export default class NavPanelWidget {
             this.navPanelEl.querySelector('.categories__buttons__item.active') as HTMLLabelElement,
             ((this.navPanelEl.querySelector('.categories__buttons__item.active') as HTMLLabelElement).previousElementSibling as HTMLInputElement).id
         ]
+        this.searchInputEl = document.querySelector('.recents__search__input') as HTMLInputElement
     }
 
     init (): void {
@@ -39,6 +41,7 @@ export default class NavPanelWidget {
                         this.contentBoxWidget.contentBoxEl.innerHTML = ''
                         this.contentBoxWidget.clearLinks()
                         if (htmlItemId === 'recents') {
+                            this.searchInputEl.value = ''
                             void this.contentBoxWidget.fetchPosts()
                         } else if (htmlItemId === 'favorites') {
                             void this.contentBoxWidget.fetchFavorites()

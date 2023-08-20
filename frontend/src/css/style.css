@@ -60,15 +60,66 @@ label {
 
             &.active {
                 color: var(--title-text-color-active);
+
+                .recents__search {
+                    opacity: 1;
+                    transform: translateY(0);
+                    pointer-events: all;
+                }
+            }
+
+            .recents__search {
+                display: flex;
+                align-items: center;
+
+                position: absolute;
+                top: 2.25em;
+                left: 1.5em;
+
+                width: 100%;
+
+                opacity: 0;
+                transform: translateY(-2em);
+                transition: all 0.5s;
+
+                pointer-events: none;
+
+                .recents__search__input {
+                    padding-left: 0.7em;
+                    padding-right: 0.7em;
+
+                    width: calc(100% - 5em);
+                    height: 2em;
+
+                    border: none;
+                    outline: none;
+                    background-color: var(--recents-color);
+                    border-radius: 0.8em;
+
+                    font-size: 0.6em;
+                    color: var(--title-text-color-active);
+
+                    &::-webkit-search-cancel-button {
+                        -webkit-appearance: none;
+                    }
+                }
+
+                .recents__search__label {
+                    margin-left: 0.2em;
+
+                    & svg {
+                        fill: var(--recents-color);
+                    }
+                }
             }
 
             .categories__buttons {
                 display: flex;
 
                 position: absolute;
+                top: 2.8em;
                 right: 0;
 
-                margin-top: 0.8em;
                 margin-right: 1em;
 
                 font-size: 0.8em;
@@ -231,7 +282,7 @@ label {
         display: flex;
         flex-direction: column-reverse;
 
-        margin-top: 0.8em;
+        margin-top: 3em;
         margin-right: 1em;
         padding-left: 2em;
         padding-right: 2em;

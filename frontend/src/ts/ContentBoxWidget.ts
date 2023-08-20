@@ -10,6 +10,7 @@ export default class ContentBoxWidget {
     private nextLinkFavorites: string | undefined
     private nextLinkCategories: string | undefined
     private currentCategory: string
+    public currentSearch: string
     readonly postsApi: PostsApi
     readonly favoritesApi: FavoritesApi
     readonly categoriesApi: CategoriesApi
@@ -22,6 +23,7 @@ export default class ContentBoxWidget {
         this.nextLinkFavorites = undefined
         this.nextLinkCategories = undefined
         this.currentCategory = 'images'
+        this.currentSearch = ''
         this.postsApi = new PostsApi(SERVER_URL)
         this.favoritesApi = new FavoritesApi(SERVER_URL)
         this.categoriesApi = new CategoriesApi(SERVER_URL)
@@ -60,9 +62,9 @@ export default class ContentBoxWidget {
     async fetchPosts (): Promise<void> {
         let responseData
         if (this.nextLinkPosts) {
-            responseData = await this.postsApi.get(this.nextLinkPosts)
+            responseData = await this.postsApi.get({ nextLink: this.nextLinkPosts, search: this.currentSearch })
         } else {
-            responseData = await this.postsApi.get()
+            responseData = await this.postsApi.get({ search: this.currentSearch })
         }
         if (responseData) {
             this.addPostsToContentBox(responseData)
@@ -196,5 +198,6 @@ export default class ContentBoxWidget {
         this.nextLinkPosts = undefined
         this.nextLinkFavorites = undefined
         this.nextLinkCategories = undefined
+        this.currentSearch = ''
     }
 }

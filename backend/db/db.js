@@ -24,16 +24,26 @@ class Posts {
         this.type = type
     }
 
-    static get (time = null) {
+    static get ({ time = null, search = undefined }) {
         let start, end
+        let getPosts = allPosts
+        if (search) {
+            getPosts = getPosts.filter((post) => {
+                if (post.type !== 'text') {
+                    const data = /\/([^/]+$)/.exec(post.data)[1]
+                    return data.includes(search)
+                }
+                return post.data.includes(search)
+            })
+        }
         if (!time) {
             start = 0
             end = 10
         } else {
-            start = allPosts.findIndex((message) => message.time === time) + 1
+            start = getPosts.findIndex((post) => post.time === time) + 1
             end = start + 10
         }
-        return allPosts.slice(start, end)
+        return getPosts.slice(start, end)
     }
 
     static post (data) {

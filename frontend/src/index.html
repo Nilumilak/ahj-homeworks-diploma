@@ -13,6 +13,10 @@
             <div class="nav-panel__item active">
                 <input id="recents" name="nav-panel" type="radio" checked hidden>
                 <label class="nav-panel__item-label" for="recents">Recents</label>
+                <div class="recents__search">
+                    <input class="recents__search__input" id="search" name="nav-panel" type="search">
+                    <label class="recents__search__label" for="search"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M796-121 533-384q-30 26-69.959 40.5T378-329q-108.162 0-183.081-75Q120-479 120-585t75-181q75-75 181.5-75t181 75Q632-691 632-584.85 632-542 618-502q-14 40-42 75l264 262-44 44ZM377-389q81.25 0 138.125-57.5T572-585q0-81-56.875-138.5T377-781q-82.083 0-139.542 57.5Q180-666 180-585t57.458 138.5Q294.917-389 377-389Z"/></svg></label>
+                </div>
             </div>
             <div class="nav-panel__item">
                 <input id="favorites" name="nav-panel" type="radio" hidden>
@@ -23,13 +27,13 @@
                 <label class="nav-panel__item-label" for="categories">Categories</label>
 
                 <div class="categories__buttons">
-                    <input id="images" name="nav-panel" type="radio" checked hidden>
+                    <input id="images" name="categories-buttons" type="radio" checked hidden>
                     <label class="categories__buttons__item active" for="images">Images</label>
-                    <input id="audios" name="nav-panel" type="radio" hidden>
+                    <input id="audios" name="categories-buttons" type="radio" hidden>
                     <label class="categories__buttons__item" for="audios">Audio</label>
-                    <input id="videos" name="nav-panel" type="radio" hidden>
+                    <input id="videos" name="categories-buttons" type="radio" hidden>
                     <label class="categories__buttons__item" for="videos">Video</label>
-                    <input id="codes" name="nav-panel" type="radio" hidden>
+                    <input id="codes" name="categories-buttons" type="radio" hidden>
                     <label class="categories__buttons__item" for="codes">Codes</label>
                 </div>
             </div>
