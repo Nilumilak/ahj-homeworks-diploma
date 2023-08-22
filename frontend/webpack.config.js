@@ -8,6 +8,7 @@ module.exports = {
     },
     entry: {
         index: './src/index.ts',
+        serviceWorker: './src/ts/serviceWorker.ts',
     },
     devtool: 'inline-source-map',
     module: {

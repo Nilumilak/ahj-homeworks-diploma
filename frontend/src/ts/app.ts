@@ -29,4 +29,13 @@ document.addEventListener('DOMContentLoaded', () => {
         void contentBoxWidget.createPost(data)
         contentBoxEl.scrollTo(0, contentBoxEl.scrollHeight)
     })
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./serviceWorker.js', { scope: './' })
+            .then((reg) => {
+                console.log('Registration succeeded. Scope is ' + reg.scope)
+            }).catch((err) => {
+                console.log('registration failed with ' + String(err))
+            })
+    }
 })
