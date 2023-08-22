@@ -2,6 +2,8 @@
 
 GitHub Page - https://nilumilak.github.io/ahj-homeworks-diploma/
 
+Server URL - https://ahj-homeworks-diploma.onrender.com
+
 ## Выполнены функции:
 
 ### Основные

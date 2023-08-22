@@ -2,7 +2,7 @@ import ChaosOrganizer from './ChaosOrganizer'
 import ContentBoxWidget from './ContentBoxWidget'
 import type { Post } from './types'
 
-const SERVER_URL = 'http://localhost:7070'
+const SERVER_URL = 'https://ahj-homeworks-diploma.onrender.com'
 export default SERVER_URL
 
 document.addEventListener('DOMContentLoaded', () => {
